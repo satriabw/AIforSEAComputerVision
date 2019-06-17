@@ -28,10 +28,18 @@ The method for detect car make and model is implemented by using Inception-V3 ne
 
 
 ## How to run the code
+### Training & Testing
+*   Please follow this guide for deep learning framework initialization - [https://github.com/brucechou1983/CheXNet-Keras](https://github.com/brucechou1983/CheXNet-Keras) 
 
-*   Please follow this guide for deep learning framework initialization - [https://github.com/brucechou1983/CheXNet-Keras](https://github.com/brucechou1983/CheXNet-Keras) Download the pre-processed dataset file (Anotated images of car) - [all-car-data.zip](https://drive.google.com/file/d/1nEsxR8dGAqcrEb7TCYufpTI7amNjza1N/view?usp=sharing)
-*   Replace files train.py and config.ini from https://github.com/brucechou1983/CheXNet-Keras repository, with these files [train.py](https:) - modified train.py and [config.ini](https:) - modified config.ini
+### Training
+*   Download the pre-processed dataset file (Anotated images of car) - [all-car-data.zip](https://drive.google.com/file/d/1nEsxR8dGAqcrEb7TCYufpTI7amNjza1N/view?usp=sharing)
+*   Replace files train.py and config.ini from https://github.com/brucechou1983/CheXNet-Keras repository, with these files   [train.py](https://github.com/satriabw/AIforSEAComputerVision/blob/master/test.py) - modified train.py and [config.ini](https://github.com/satriabw/AIforSEAComputerVision/blob/master/cofig/train/config.ini) - modified config.ini
 *   Put car_split, car_split_2, and car_split_3 folders in file index in /data folder together with default_split folder
-*   run python train.py to train or test.py to test the file
+*   Run python train.py to train to train the model
 
+### Testing
+*   Download testing data from [testing_data.zip](https://www.dropbox.com/sh/jyhtjeam3xy55ts/AABayG6hGNjSoGw-HZs954ipa?dl=0), move test.csv to /experiments/car-split-InceptionV3 folder
+*   Replace files test.py and config.ini from https://github.com/brucechou1983/CheXNet-Keras repository, with these files [test.py](https://github.com/satriabw/AIforSEAComputerVision/blob/master/test.py) - modified train.py and [config.ini](https://github.com/satriabw/AIforSEAComputerVision/blob/master/config/test/config.ini) - modified config.ini
+*   Run test.py to test the model
+*   Open /experiments/car-split-InceptionV3/test.log to see confidence score for each prediction, accuracy, precision and recall.
 
