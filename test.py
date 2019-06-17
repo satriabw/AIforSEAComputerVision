@@ -9,7 +9,6 @@ from models.keras import ModelFactory
 from sklearn.metrics import roc_auc_score, accuracy_score, precision_score, recall_score
 from utility import get_sample_counts
 
-
 def main():
     # parser config
     config_file = "./config.ini"
@@ -80,44 +79,42 @@ def main():
 
     print("** make prediction **")
     y_hat = model.predict_generator(test_sequence, verbose=1)
+    y_hat_max_index = np.argmax(y_hat, axis=1)
+
+    # Decode one hot label to index
     y = test_sequence.get_y_true()
+    y_gt = [np.where(r == 1)[0][0] for r in y]
 
     test_log_path = os.path.join(output_dir, "test.log")
     print(f"** write log to {test_log_path} **")
-    aurocs = []
-    precision = []
-    accuracy = []
-    recall = []
-    with open(test_log_path, "w") as f:
-        for i in range(len(class_names)):
-            try:
-                auroc_score = roc_auc_score(y[:, i], y_hat[:, i])
-                accuracy_score = accuracy_score(y[:, i], y_hat[:, i])
-                precision_score = precision_score(y[:, i], y_hat[:, i])
-                recall_score = recall_score(y[:, i], y_hat[:, i])
-                aurocs.append(auroc_score)
-                precision.append(precision_score)
-                accuracy.append(accuracy_score)
-                recall.append(recall_score)
-            except ValueError:
-                auroc_score = recall_score = accuracy_score = precision_score = 0
-            f.write(
-                f"{class_names[i]}\naccuracy: {accuracy_score}\nprecision: {precision_score}\nrecall: {recall_score}\nauroc: {auroc_score}\n"
-                    )
-        mean_auroc = np.mean(aurocs)
-        mean_accuracy = np.mean(accuracy)
-        mean_precision = np.mean(precision)
-        mean_recall = np.mean(recall)
-        f.write("-------------------------\n")
-        f.write(f"mean accuracy: {mean_accuracy}\n")
-        f.write(f"mean precision: {mean_precision}\n")
-        f.write(f"mean recall: {mean_recall}\n")
-        f.write(f"mean auroc: {mean_auroc}\n")
-        print(f"mean accuracy: {mean_accuracy}\n")
-        print(f"mean precision: {mean_precision}\n")
-        print(f"mean recall: {mean_recall}\n")
-        print(f"mean auroc: {mean_auroc}")
 
+    pred_label = []
+    with open(test_log_path, "w") as f:
+        for i in range(len(y_hat)):
+            # Append prediction confidence score and prediction label output
+            y_pred = np.zeros(len(y_hat[i]))
+            y_pred[y_hat_max_index[i]] = 1
+
+            # convert one hot label to indexs
+            y_pred_label = np.where(y_pred==1)[0][0]
+
+            # Compute score
+            confidence_score = np.amax(y_hat[i])
+
+            pred_label.append(y_pred_label)
+            f.write(f"{class_names[y_gt[i]]}\nConfidence Score: {confidence_score}\n")
+
+
+        accuracy = accuracy_score(y_gt, pred_label)
+        precision = precision_score(y_gt, pred_label, average='macro')
+        recall = recall_score(y_gt, pred_label, average='macro')
+        f.write("-------------------------\n")
+        f.write(f"accuracy: {accuracy}\n")
+        f.write(f"precision: {precision}\n")
+        f.write(f"recall: {recall}\n")
+        print(f"accuracy: {accuracy}")
+        print(f"precision: {precision}")
+        print(f"recall: {recall}")
 
 if __name__ == "__main__":
     main()
