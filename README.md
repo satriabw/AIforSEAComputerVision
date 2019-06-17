@@ -7,6 +7,8 @@
 
 ## Overviews
 
+Download [overview document](https://github.com/satriabw/AIforSEAComputerVision/blob/master/documents/overview_document.pdf) for brief explanation about the code
+
 ![alt_text](images/preview_process.png "preview")
 
 <br/>
