@@ -1,9 +1,9 @@
 
 # Contents
 
-### Overviews
-### Result
-### How to run the code
+## Overviews
+## Result
+## How to run the code
 
 ## Overviews
 
@@ -33,7 +33,7 @@ The method for detect car make and model is implemented by using Inception-V3 ne
 
 ### Training
 *   Download the pre-processed dataset file (Anotated images of car) - [all-car-data.zip](https://drive.google.com/file/d/1nEsxR8dGAqcrEb7TCYufpTI7amNjza1N/view?usp=sharing)
-*   Replace files train.py and config.ini from https://github.com/brucechou1983/CheXNet-Keras repository, with these files   [train.py](https://github.com/satriabw/AIforSEAComputerVision/blob/master/test.py) - modified train.py and [config.ini](https://github.com/satriabw/AIforSEAComputerVision/blob/master/cofig/train/config.ini) - modified config.ini
+*   Replace files train.py and config.ini from https://github.com/brucechou1983/CheXNet-Keras repository, with these files   [train.py](https://github.com/satriabw/AIforSEAComputerVision/blob/master/test.py) - modified train.py and [config.ini](https://github.com/satriabw/AIforSEAComputerVision/blob/master/config/train/config.ini) - modified config.ini
 *   Put car_split, car_split_2, and car_split_3 folders in file index in /data folder together with default_split folder
 *   Run python train.py to train to train the model
 
