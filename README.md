@@ -1,9 +1,9 @@
 
 # Contents
 
-<h3><a="https://github.com/satriabw/AIforSEAComputerVision#overviews-1">Overviews</a></h3>
-<h3><a="https://github.com/satriabw/AIforSEAComputerVision#result-1">Result</a></h3>
-<h3><a="https://github.com/satriabw/AIforSEAComputerVision#how-to-run-code-1">How to run the code</a></h3>
+[Overviews](#overviews)
+[Result](#result)
+[How to run the code](#how-to-run-code)
 
 ## Overviews
 
