@@ -4,12 +4,12 @@
 ### Overviews
 ### Result
 ### How to run the code
-<br>
+
 ## Overviews
 
 ![alt_text](images/preview_process.png "preview")
 
-<br>
+<br/>
 
 The implementation for detecting car make and model is started by doing data preprocessing to obtain car label for training and testing. The next step is to train the deep learning model for car make and model detection. After training the model, car make and model detection is performed from testing dataset.
 
