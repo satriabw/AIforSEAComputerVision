@@ -30,6 +30,9 @@ The method for detect car make and model is implemented by using Inception-V3 ne
 
 
 ## How to run the code
+
+The instruction to perform car make and model detection using custom dataset is explained in the [overview document](https://github.com/satriabw/AIforSEAComputerVision/blob/master/documents/overview_document.pdf)
+
 ### Training & Testing
 *   Please follow this guide for deep learning framework initialization - [https://github.com/brucechou1983/CheXNet-Keras](https://github.com/brucechou1983/CheXNet-Keras) 
 
